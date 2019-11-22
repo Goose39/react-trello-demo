@@ -6,17 +6,17 @@ import List from './List';
 describe('Messages component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<List />, div);
+    ReactDOM.render(<List cards= {[]}/>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
   it('renders the UI as expected', () => {
     const tree = renderer
       .create(<List 
-                cards = {
-                  {'a': { id: 'a', title: 'First card', content: 'lorem ipsum' },
-                  'b': { id: 'b', title: 'Second card', content: 'lorem ipsum' }}
-                   }/>)
+                cards = {[
+                 { id: 'a', title: 'First card', content: 'lorem ipsum' },
+                  { id: 'b', title: 'Second card', content: 'lorem ipsum' }
+                   ]} />)
       .toJSON();
     expect(tree).toMatchSnapshot();  
   });
